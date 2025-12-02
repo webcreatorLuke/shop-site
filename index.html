@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini Marketplace</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">Mini Marketplace</div>
+    <nav class="nav">
+      <button id="navCatalog">Catalog</button>
+      <button id="navCart">Cart</button>
+      <button id="navDashboard">Seller dashboard</button>
+      <span id="authStatus"></span>
+      <button id="navLogin">Login</button>
+      <button id="navLogout" class="hidden">Logout</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- AUTH -->
+    <section id="authView" class="view">
+      <h2>Welcome</h2>
+      <div class="auth-panels">
+        <div class="panel">
+          <h3>Create account</h3>
+          <form id="signupForm">
+            <label>Display name
+              <input type="text" id="signupName" required/>
+            </label>
+            <label>Email
+              <input type="email" id="signupEmail" required/>
+            </label>
+            <label>Password
+              <input type="password" id="signupPassword" required minlength="6"/>
+            </label>
+            <label>Role
+              <select id="signupRole">
+                <option value="buyer">Buyer</option>
+                <option value="seller">Seller</option>
+              </select>
+            </label>
+            <button type="submit">Sign up</button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h3>Login</h3>
+          <form id="loginForm">
+            <label>Email
+              <input type="email" id="loginEmail" required/>
+            </label>
+            <label>Password
+              <input type="password" id="loginPassword" required/>
+            </label>
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATALOG -->
+    <section id="catalogView" class="view hidden">
+      <div class="catalog-header">
+        <h2>Catalog</h2>
+        <input type="search" id="searchInput" placeholder="Search products..." />
+        <select id="categoryFilter">
+          <option value="">All categories</option>
+        </select>
+      </div>
+      <div id="productGrid" class="grid"></div>
+    </section>
+
+    <!-- CART -->
+    <section id="cartView" class="view hidden">
+      <h2>Your cart</h2>
+      <div id="cartItems"></div>
+      <div class="cart-summary">
+        <span id="cartTotal">$0.00</span>
+        <button id="checkoutBtn">Checkout (demo)</button>
+      </div>
+      <p class="muted">Checkout is a demo (no payment processing).</p>
+    </section>
+
+    <!-- SELLER DASHBOARD -->
+    <section id="dashboardView" class="view hidden">
+      <h2>Seller dashboard</h2>
+      <div class="panel">
+        <h3>Add a product</h3>
+        <form id="productForm">
+          <label>Title
+            <input type="text" id="prodTitle" required/>
+          </label>
+          <label>Description
+            <textarea id="prodDesc" required></textarea>
+          </label>
+          <label>Price (USD)
+            <input type="number" id="prodPrice" min="0" step="0.01" required/>
+          </label>
+          <label>Category
+            <input type="text" id="prodCategory" required/>
+          </label>
+          <label>Image URL
+            <input type="url" id="prodImage" placeholder="https://..."/>
+          </label>
+          <label>Stock
+            <input type="number" id="prodStock" min="0" step="1" required/>
+          </label>
+          <button type="submit">Publish</button>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h3>Your products</h3>
+        <div id="sellerProducts" class="grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>Demo marketplace. For real deployments, add a backend and payments.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
