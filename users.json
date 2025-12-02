@@ -1,0 +1,8 @@
+[
+  {
+    "id": "u_admin",
+    "username": "Luke",
+    "passwordHash": "$2b$10$hashedValueHere",
+    "role": "owner"
+  }
+]
